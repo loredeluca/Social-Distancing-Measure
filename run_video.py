@@ -1,6 +1,7 @@
 import argparse
 import logging
 import time
+import simpleaudio as sa
 
 import cv2
 import numpy as np
@@ -20,6 +21,10 @@ logger.addHandler(ch)
 fps_time = 0
 
 mouse_pts=[]
+filename = 'shortalarm.wav'
+wave_obj = sa.WaveObject.from_wave_file(filename)
+
+
 def get_mouse_points(event, x, y, flags, param):
     # Used to mark 4 points on the frame zero of the video that will be warped
     # Used to mark 2 points on the frame zero of the video that are 6 feet away
@@ -77,7 +82,7 @@ if __name__ == '__main__':
     if cap.isOpened() is False:
         print("Error opening video stream or file")
     while cap.isOpened():
-        frame_num+=1 #add.........
+        frame_num += 1
         ret_val, image = cap.read()
 
         frame_h = image.shape[0]
@@ -112,26 +117,33 @@ if __name__ == '__main__':
         pts = np.array(
             [four_points[0], four_points[1], four_points[3], four_points[2]], np.int32)
         cv2.polylines(image, [pts], True, (0, 255, 255), thickness=3)
-        #end add..................
 
-        logger.debug('image process+')#add
+        logger.debug('image process+')
         #invdividuo le persone // Detect person
         humans = e.inference(image, resize_to_default=(w > 0 and h > 0), upsample_size=args.resize_out_ratio)#add
         print('humans: ',humans)
 
         if not args.showBG:
             image = np.zeros(image.shape)
-        logger.debug('image process+')#add
+        logger.debug('image process+')
         image, humansFeetPoints = TfPoseEstimator.draw_humans(image, humans, imgcopy=False)
         print('humanFeetPoints', humansFeetPoints)
         logger.debug('show+')#add
         cv2.putText(image, "FPS: %f" % (1.0 / (time.time() - fps_time)), (10, 10),  cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 0), 2)
+        #cv2.putText(image, 'WARNING', (10,20), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0,0,255), 2)
         cv2.imshow('tf-pose-estimation result', image)
 
         #disegno i punti sulla bird_view
         warped_pts, bird_image = plot_points_on_bird_eye_view(image, humansFeetPoints, M, scale_w, scale_h)
         #calcolo le linee di violazione distanza sociale, e gli passo i punti della bird view, bird image su cui scrivo, e la distanza di riferimento(circa 2m)
         social_distance_violations, good_social_distance, pairs = plot_lines_between_nodes(warped_pts, bird_image, d_thresh)
+        #controllo se ci sono violazioni di distanza sociale
+        if social_distance_violations > 0:
+            cv2.putText(image, 'WARNING', (int(frame_w/2)-100, int(frame_h/2)), cv2.FONT_HERSHEY_SIMPLEX, 2, (0, 0, 255), 4)
+            cv2.imshow('tf-pose-estimation result', image)
+            play_obj = wave_obj.play()
+            play_obj.wait_done()  # Wait until sound has finished playing
+
         bird_movie.write(bird_image)
 
         fps_time = time.time()
