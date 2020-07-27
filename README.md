@@ -17,7 +17,7 @@ cap = cv2.VideoCapture(args.video) #recorded video
 ```
 or
 ```sh
-cap = cv2.VideoCapture(args.camera) #real-time video
+cap = cv2.VideoCapture(args.video0) #real-time video
 ```
 Then, running `socialDistance.py`, if the software does not automatically detect the chessboard, will open a window of the first frame in the video for **calibration** and will be asked to mark 4 points:
 
