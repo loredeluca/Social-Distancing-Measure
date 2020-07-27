@@ -2,9 +2,9 @@
 This software is a social distancing detector: it use the OpenPose tool to extract a 2D skeleton from the webcam/video and use skeleton joints to measure feet location for each detected person. 
 Thanks to the homography it convert feet coordinates in a bird view and compute the distances between each person and its neighbors and generate a warning message when the distance between two persons is less than 2 mt.
 
-<!---The result obtained is the following:
-Per aggiungere GIF guarda questo https://medium.com/@josephcardillo/how-to-add-gifs-to-your-github-readme-89c74da2ce47
-! [] (Nome-di-giphy.gif)--->
+The result obtained is the following:
+
+! [] (output.gif)
 
 ### How to install
 - Download [OpenPose](https://github.com/CMU-Perceptual-Computing-Lab/openpose) (you can download a simplified version for Mac OS that works on CPU [here](https://github.com/ildoonet/tf-pose-estimation)) to detect people on the scene.
