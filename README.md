@@ -4,7 +4,7 @@ Thanks to the homography it convert feet coordinates in a bird view and compute 
 
 The result obtained is the following:
 
-! [] (output.gif)
+![output](https://github.com/loredeluca/Social-Distancing-Measure/blob/master/output.gif)
 
 ### How to install
 - Download [OpenPose](https://github.com/CMU-Perceptual-Computing-Lab/openpose) (you can download a simplified version for Mac OS that works on CPU [here](https://github.com/ildoonet/tf-pose-estimation)) to detect people on the scene.
