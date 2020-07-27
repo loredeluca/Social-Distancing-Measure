@@ -31,7 +31,7 @@ After marking these 4 points, with another click anywhere in the scene the socia
 
 - bird eye view, with detected people and their safe-distance region.
 
-The details of this work and the functions used are available in the paper ['Image and Video Anlysis Project'](INSERIRE LINK GITHUB DELLA RELAZIONE NEL REPOSITORY) in this repository
+The details of this work and the functions used are available in the paper ['Image and Video Analysis Project'](INSERIRE LINK GITHUB DELLA RELAZIONE NEL REPOSITORY) in this repository
 
 ### References
 [1] Landing AI, ["AI Tool to Help Customers Monitor Social Distancing in the Workplace"](https://landing.ai/landing-ai-creates-an-ai-tool-to-help-customers-monitor-social-distancing-in-the-workplace/), April 2020
