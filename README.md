@@ -33,5 +33,7 @@ After marking these 4 points, with another click anywhere in the scene the socia
 
 The details of this work and the functions used are available in the paper ['Image and Video Analysis Project'](INSERIRE LINK GITHUB DELLA RELAZIONE NEL REPOSITORY) in this repository
 
+Some operating examples are available at the following link: https://drive.google.com/drive/folders/1X1h2gBOS2y37HF5bY90luw8SgPwK6XUW
+
 ### References
 [1] Landing AI, ["AI Tool to Help Customers Monitor Social Distancing in the Workplace"](https://landing.ai/landing-ai-creates-an-ai-tool-to-help-customers-monitor-social-distancing-in-the-workplace/), April 2020
